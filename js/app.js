@@ -40,22 +40,30 @@ const containerCount = document.getElementsByClassName("landing__container").len
 
 for (let i = 0; i < containerCount; i++) {
 
-    const el = document.querySelectorAll("section")[i];
-    const listName = el.dataset.nav;
+    const target = document.querySelectorAll("section")[i];
+    const listName = target.dataset.nav;
     const newList = document.createElement("li");
     const listText = document.createTextNode(listName);
     const listItem = "sample-nav-" + i;
-    newList.setAttribute("id", listItem);
-    newList.setAttribute("class", "nav-list-item");
+    newList.setAttribute("id", listItem); //set new #id
+    newList.setAttribute("class", "nav-list-item"); //set new .class
     newList.appendChild(listText);
     navbarList.appendChild(newList);
 
+    // Add class 'active' to section when near top of viewport
+
+
+    // Scroll to anchor ID using scrollTO event
+
+    const clickFrom = document.getElementById(listItem); //get #id from each navbar list
+    clickFrom.addEventListener( 'click', function () {
+        target.scrollIntoView ({ //scroll to target = each section
+            behavior: 'smooth',
+            block: 'start'
+        })
+    })
 }
 
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
 
 
 /**
