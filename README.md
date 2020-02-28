@@ -13,4 +13,4 @@
 
 ## Link to Github Page
 
-Feel free to visit my landing page [HERE]()! 
+Feel free to visit my landing page [HERE](https://yuyamrhs.github.io/FEND_Project_2_LandingPage/)! 
