@@ -8,19 +8,10 @@ const containerCount = document.getElementsByClassName("landing__container").len
 
 /**
  * End Global Variables
- * Start Helper Functions
- * 
+ * Begin Events
 */
 
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
+// Build the navigation menu
 
 for (let i = 0; i < containerCount; i++) {
 
@@ -31,77 +22,42 @@ for (let i = 0; i < containerCount; i++) {
     const listItem = "sample-nav-" + i;
     newList.setAttribute("id", listItem); //set new #id
     newList.setAttribute("class", "menu__link"); //set new .class
-    newList.appendChild(listText);
-    navbarList.appendChild(newList);
+    newList.appendChild(listText); //add ID to new li lement
+    navbarList.appendChild(newList); //add Class to new li lement
 
-
-// Scroll to anchor ID using scrollTO event
+// Scroll to section on link click
 
     const clickFrom = document.getElementById(listItem); //get #id from each navbar list
     clickFrom.addEventListener( 'click', function () {
-        target.scrollIntoView ({ //scroll to target = each section
+        target.scrollIntoView ({ //scroll to target(each section) smoothly 
             behavior: 'smooth',
             block: 'start'
         })
     })
-
 }
-
 
  // Add class 'active' to section when near top of viewport
 
- function checkView () {
-    let isInViewport = function (elem) {
-        let bounding = elem.getBoundingClientRect();
-        return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    };
+ window.addEventListener('scroll', myFunction); // highlight section in viewport to yellow
 
-    const features = document.querySelectorAll('section')[0];
-    window.addEventListener('scroll', function (event) {
-        if (isInViewport(features)) {
-            features.classList.add("active");
-        } else {
-            features.classList.remove("active");
-        }
-    }, false);
-}
-
-checkView();
-
-
- // [QUESTION to mentors] How can I move active class (highlight) to next section. I am guessing For Loop should be applied but I couldn't find a good solution.
-
+ function myFunction() { // function to add/remove active class iterately
+     const allSections = document.querySelectorAll('section');
+     for (i = 0; i < allSections.length; i++) {
+         if(!isInViewport(allSections[i])){
+             allSections[i].classList.remove('active');
+         } else {
+             allSections[i].classList.add('active');
+         }
+     }
+ }
  
-/*  
-    const sectionPosition = document.getElementById("section1"); 
-    const distance = sectionPosition.getBoundingClientRect();
-    window.onscroll = function() {myFunction()};
-
-    function myFunction() {
-
-        if (document.body.scrollTop + 100 > distance.top || document.documentElement.scrollTop + 100 > distance.top) {
-            sectionPosition.className = "your-active-class";
-        } else {  
-            sectionPosition.className = "";
-        }
-    }
-*/
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+ function isInViewport(elem) { // function to define the sections' position in viewport
+     let bounding = elem.getBoundingClientRect();
+     return (
+         bounding.top >= 0 &&
+         bounding.left >= 0 &&
+         bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+         bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+     );
+ }
+ 
