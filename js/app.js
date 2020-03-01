@@ -44,28 +44,53 @@ for (let i = 0; i < containerCount; i++) {
             block: 'start'
         })
     })
+
 }
+
 
  // Add class 'active' to section when near top of viewport
 
+ function checkView () {
+    let isInViewport = function (elem) {
+        let bounding = elem.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    };
+
+    const features = document.querySelectorAll('section')[0];
+    window.addEventListener('scroll', function (event) {
+        if (isInViewport(features)) {
+            features.classList.add("active");
+        } else {
+            features.classList.remove("active");
+        }
+    }, false);
+}
+
+checkView();
+
+
  // [QUESTION to mentors] How can I move active class (highlight) to next section. I am guessing For Loop should be applied but I couldn't find a good solution.
 
-//for (let j = 1; j < containerCount; i++) {
-
-    const sectionPosition = document.getElementById("section1"); // "section" + J???
+ 
+/*  
+    const sectionPosition = document.getElementById("section1"); 
     const distance = sectionPosition.getBoundingClientRect();
     window.onscroll = function() {myFunction()};
 
     function myFunction() {
 
-        if (document.body.scrollTop > distance.top || document.documentElement.scrollTop > distance.top) {
+        if (document.body.scrollTop + 100 > distance.top || document.documentElement.scrollTop + 100 > distance.top) {
             sectionPosition.className = "your-active-class";
-        } else {  // Should I add additional else if? but I don't know what to add.
+        } else {  
             sectionPosition.className = "";
         }
     }
-// }
-
+*/
 
 /**
  * End Main Functions
