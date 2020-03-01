@@ -2,12 +2,15 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Applied Functions](#applied-functions)
+* [Link to Github Page](#link-to-github-page)
 
-## Instructions
+## Applide Functions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* Dynamic Navigation Menu --done
+* Functionality to scroll to sections --done
+* Functionality to distinguish the section in view --not done (I need assistance!!)
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Link to Github Page
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+Feel free to visit my landing page [HERE](https://yuyamrhs.github.io/FEND_Project_2_LandingPage/)! 
